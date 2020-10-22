@@ -59,11 +59,16 @@ export function calculateDistance(x1, y1, x2, y2) {
 }
 
 /**
- * function that returns a random whole number between a minimum and a maximumm value
+ * function that returns a random whole number between a minimum and a maximum value (the maximum value is included)
  * @param {number} min minimum value
  * @param {number} max maximum value
  */
 export function randomNumber(min, max) {
+    // Math.random() returns a decimal value between 0 & 1.
+    // Multiply it with a number(max) to get a value between 0 & that number
+    // Add a number(min) to the result to shift the result to get a number between min & (max + min) 
+    // Now subtract(min + 1) from the max value to get a number between min and max (included).
+    // Now round this result down to get a whole number
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
@@ -123,5 +128,19 @@ export function fillEllipse(x, y, rX, rY) {
 export function strokeEllipse(x, y, rX, rY) {
     context.beginPath();
     context.ellipse(x, y, rX, rY, 0, 0, Math.PI * 2);
+    context.stroke();
+}
+
+/**
+ * Draws a line between 2 coordinates
+ * @param {number} x1 the x coordinate of the start of the line
+ * @param {number} y1 the y coordinate of the start of the line
+ * @param {number} x2 the x coordinate of the end of the line
+ * @param {number} y2 the y coordinate of the end of the line
+ */
+export function drawLine(x1, y1, x2, y2) {
+    context.beginPath();
+    context.moveTo(x1, y1);
+    context.lineTo(x2, y2);
     context.stroke();
 }

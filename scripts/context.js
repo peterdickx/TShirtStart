@@ -6,7 +6,7 @@ setupCanvasContext();
 
 export default context;
 
-function setupCanvasContext() {
+export function setupCanvasContext() {
     //get a reference to the canvas element and configure it to fill the whole window
     let canvas = document.querySelector("canvas");
     canvas.width = window.innerWidth;
@@ -14,8 +14,8 @@ function setupCanvasContext() {
     context = canvas.getContext('2d');
 }
 
-window.onresize = reloadPage;
+window.onresize = reload;
 
-function reloadPage() {
-    window.location.reload();
+function reload() {
+    location.reload();
 }
